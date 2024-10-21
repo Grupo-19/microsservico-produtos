@@ -1,0 +1,12 @@
+br\com\fiap\fiaptechchallengefase4\adapters\dtos\ProdutoDTO.class
+br\com\fiap\fiaptechchallengefase4\TechChallengeApplication.class
+br\com\fiap\fiaptechchallengefase4\adapters\controllers\ProdutoController.class
+br\com\fiap\fiaptechchallengefase4\core\usecases\ProdutoUseCase.class
+br\com\fiap\fiaptechchallengefase4\gateway\repository\ProdutoRepositoryJpaImpl.class
+br\com\fiap\fiaptechchallengefase4\gateway\repository\ProdutoRepository.class
+br\com\fiap\fiaptechchallengefase4\gateway\external\ExternalServiceCliente.class
+br\com\fiap\fiaptechchallengefase4\infra\config\AppConfig.class
+br\com\fiap\fiaptechchallengefase4\core\mapper\ProdutoMapper.class
+br\com\fiap\fiaptechchallengefase4\infra\persistence\ProdutoEntity.class
+br\com\fiap\fiaptechchallengefase4\core\domain\Produto.class
+br\com\fiap\fiaptechchallengefase4\core\gateway\ProdutoGateway.class

@@ -1,0 +1,12 @@
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\adapters\controllers\ProdutoController.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\adapters\dtos\ProdutoDTO.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\core\domain\Produto.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\core\gateway\ProdutoGateway.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\core\mapper\ProdutoMapper.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\core\usecases\ProdutoUseCase.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\gateway\external\ExternalServiceCliente.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\gateway\repository\ProdutoRepository.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\gateway\repository\ProdutoRepositoryJpaImpl.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\infra\config\AppConfig.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\infra\persistence\ProdutoEntity.java
+C:\Users\user\Documents\TI\Pos-Tech-FIAP\Fase_4\tech-challenge\microsservico-produto\src\main\java\br\com\fiap\fiaptechchallengefase4\TechChallengeApplication.java
