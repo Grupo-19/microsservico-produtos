@@ -32,6 +32,10 @@ public class ProdutoUseCase {
     }
 
     public void saveProduto(Produto product) {
+        // Verificando se o produto é nulo
+        if(product == null || product.getNome() == null || product.getPreco() <= 0){
+            throw new IllegalArgumentException("Produto inválido");
+        }
         produtoGateway.save(ProdutoMapper.toEntity(product));
     }
 
