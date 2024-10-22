@@ -1,7 +1,8 @@
-package br.com.fiap.fiaptechchallengefase4.core.usecases;
+package br.com.fiap.fiaptechchallengefase4.unit.core.usecases;
 
 import br.com.fiap.fiaptechchallengefase4.core.domain.Produto;
 import br.com.fiap.fiaptechchallengefase4.core.gateway.ProdutoGateway;
+import br.com.fiap.fiaptechchallengefase4.core.usecases.ProdutoUseCase;
 import br.com.fiap.fiaptechchallengefase4.infra.persistence.ProdutoEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
