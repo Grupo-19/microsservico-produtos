@@ -65,6 +65,10 @@
 			<artifactId>spring-restdocs-mockmvc</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<properties>
+  <sonar.organization>grupo-19</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 	</dependencies>
 
 	<build>
