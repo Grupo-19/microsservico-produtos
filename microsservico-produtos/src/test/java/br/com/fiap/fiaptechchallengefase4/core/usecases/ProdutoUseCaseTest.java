@@ -10,14 +10,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import static org.mockito.Mockito.*;
 
 
 @ExtendWith({MockitoExtension.class})
@@ -35,12 +34,12 @@ class ProdutoUseCaseTest {
     @DisplayName("Deve retornar lista de produtos quando existir produto cadastrado")
     void getAllProdutos() {
         List<ProdutoEntity> produtosMock = Arrays.asList(new ProdutoEntity(1L, "Produto 1", 10.0), new ProdutoEntity(2L, "Produto 2", 20.0));
-        Mockito.when(this.produtoGateway.findAll()).thenReturn(produtosMock);
+        when(this.produtoGateway.findAll()).thenReturn(produtosMock);
         List<Produto> result = this.produtoUseCase.getAllProdutos();
         Assertions.assertNotNull(result);
         Assertions.assertEquals(2, result.size());
         Assertions.assertEquals("Produto 1", ((Produto)result.get(0)).getNome());
-        ((ProdutoGateway)Mockito.verify(this.produtoGateway, Mockito.times(1))).findAll();
+        ((ProdutoGateway) verify(this.produtoGateway, times(1))).findAll();
     }
 
     @Test
@@ -50,12 +49,28 @@ class ProdutoUseCaseTest {
         ProdutoEntity produtoMock = new ProdutoEntity();
         produtoMock.setId(id);
         produtoMock.setNome("Nome produto");
-        Mockito.when(this.produtoGateway.findById(id)).thenReturn(produtoMock);
+        when(this.produtoGateway.findById(id)).thenReturn(produtoMock);
+
         Produto produtoRetornado = this.produtoUseCase.getProdutoById(id);
+
         Assertions.assertNotNull(produtoRetornado);
         Assertions.assertEquals(id, produtoRetornado.getId());
         Assertions.assertEquals("Nome produto", produtoRetornado.getNome());
-        ((ProdutoGateway)Mockito.verify(this.produtoGateway, Mockito.times(1))).findById(id);
+
+        verify(this.produtoGateway, times(1)).findById(id);
+    }
+
+
+    @Test
+    @DisplayName("Deve retornar null ao buscar produto por ID inválido")
+    void getProdutoById_Invalido() {
+        Long idInvalido = 999L;
+        when(produtoGateway.findById(idInvalido)).thenReturn(null);
+
+        Produto produtoRetornado = produtoUseCase.getProdutoById(idInvalido);
+
+        assertNull(produtoRetornado);
+        verify(produtoGateway, times(1)).findById(idInvalido);
     }
 
     @Test
@@ -64,7 +79,7 @@ class ProdutoUseCaseTest {
         Produto produto = new Produto(1L, "Produto 1", 10.0);
         this.produtoUseCase.saveProduto(produto);
         ArgumentCaptor<ProdutoEntity> captor = ArgumentCaptor.forClass(ProdutoEntity.class);
-        ((ProdutoGateway)Mockito.verify(this.produtoGateway, Mockito.times(1))).save((ProdutoEntity)captor.capture());
+        ((ProdutoGateway) verify(this.produtoGateway, times(1))).save((ProdutoEntity)captor.capture());
         ProdutoEntity produtoEntityCapturado = (ProdutoEntity)captor.getValue();
         Assertions.assertEquals(produto.getId(), produtoEntityCapturado.getId());
         Assertions.assertEquals(produto.getNome(), produtoEntityCapturado.getNome());
@@ -72,10 +87,29 @@ class ProdutoUseCaseTest {
     }
 
     @Test
+    @DisplayName("Deve lançar exceção ao salvar produto inválido")
+    void saveProduto_Invalido() {
+        Produto produtoInvalido = new Produto(null, null, -10.0);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            produtoUseCase.saveProduto(produtoInvalido);
+        });
+        assertEquals("Produto inválido", exception.getMessage());
+        verify(produtoGateway, never()).save(any());
+    }
+
+    @Test
     @DisplayName("Deve deletar um produto corretamente")
     void deleteProduto() {
         Long id = 1L;
         this.produtoUseCase.deleteProduto(id);
-        ((ProdutoGateway)Mockito.verify(this.produtoGateway, Mockito.times(1))).delete(id);
+        ((ProdutoGateway) verify(this.produtoGateway, times(1))).delete(id);
+    }
+
+    @Test
+    @DisplayName("Deve fazer nada ao deletar produto que não existe")
+    void deleteProduto_NaoExistente() {
+        Long id = 999L;
+        produtoUseCase.deleteProduto(id);
+        verify(produtoGateway, times(1)).delete(id);
     }
 }

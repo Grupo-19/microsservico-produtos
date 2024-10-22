@@ -3,6 +3,8 @@ package br.com.fiap.fiaptechchallengefase4.core.usecases;
 import br.com.fiap.fiaptechchallengefase4.core.domain.Produto;
 import br.com.fiap.fiaptechchallengefase4.core.gateway.ProdutoGateway;
 import br.com.fiap.fiaptechchallengefase4.core.mapper.ProdutoMapper;
+import br.com.fiap.fiaptechchallengefase4.infra.persistence.ProdutoEntity;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,8 +23,12 @@ public class ProdutoUseCase {
     }
 
     public Produto getProdutoById(Long id) {
+        ProdutoEntity entity = produtoGateway.findById(id);
+        if (entity == null) {
+            return null; // Retorna null se o produto não for encontrado
+        }
         produtoGateway.delete(id);
-        return ProdutoMapper.toDomain(produtoGateway.findById(id));
+        return ProdutoMapper.toDomain(entity);
     }
 
     public void saveProduto(Produto product) {
