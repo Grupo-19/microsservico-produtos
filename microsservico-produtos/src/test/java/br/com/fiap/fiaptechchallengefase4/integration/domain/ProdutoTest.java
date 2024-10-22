@@ -1,4 +1,4 @@
-package br.com.fiap.fiaptechchallengefase4.unit.core.domain.domain;
+package br.com.fiap.fiaptechchallengefase4.integration.domain;
 
 import br.com.fiap.fiaptechchallengefase4.core.domain.Produto;
 import org.junit.jupiter.api.DisplayName;
